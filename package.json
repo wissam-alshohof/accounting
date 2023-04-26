@@ -1,6 +1,6 @@
 {
   "name": "accounting",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +9,6 @@
     "test": "ng test",
     "env:get-version": "node -pe \"require('./package.json').version\"",
     "build:version": "ng build --prod --configuration=version --version-mark=v --version-num=$(npm run env:get-version)"
-
   },
   "private": true,
   "dependencies": {
