@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "env:get-version": "node -pe \"require('./package.json').version\"",
-    "build:version": "ng build --prod --configuration=version --version-mark=v --version-num=$(npm run env:get-version)"
+    "env:set-version": "powershell -Command \"((Get-Content ./src/environments/environment.ts) -replace 'APP_VERSION: .+', ('APP_VERSION: ''{0}'',' -f (Get-Content package.json | ConvertFrom-Json).version)) | Set-Content ./src/environments/environment.ts\"",
+    "build:version": "npm run env:set-version && ng build"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +33,7 @@
     "@angular/language-service": "^16.0.0-next.5",
     "@schematics/angular": "^16.0.0-next.5",
     "@types/jasmine": "~4.3.0",
+    "@types/node": "^18.16.1",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
